@@ -18,13 +18,13 @@ class BlackJackHands
         allCards.ShuffleDeck();
     }
 
-    public void PlayerHand(bool playerStand)
+    public void PlayerHand(bool standQ)
     {
         if (BustCheck(true) == true)
         {
             Console.WriteLine("You have busted over 21!");
         }
-        else if (playerStand == false)
+        else if (playerStand == false && standQ == false)
         {
             Console.WriteLine("You drew " + allCards.deck[cardDrawn].cardName);
             playerValue += allCards.deck[cardDrawn].cardValue;
@@ -34,7 +34,7 @@ class BlackJackHands
         }
         else 
         {
-            this.playerStand = playerStand;
+            this.playerStand = true;
             Console.WriteLine("You have stood with " + playerValue);
         }
     }
@@ -50,7 +50,7 @@ class BlackJackHands
         {
             Console.WriteLine("The house drew " + allCards.deck[cardDrawn].cardName);
             houseValue += allCards.deck[cardDrawn].cardValue;
-            Console.WriteLine("The house has " + houseValue);
+            Console.WriteLine("The house has " + houseValue + "\r\n");
 
             cardDrawn++;
         }
@@ -60,9 +60,17 @@ class BlackJackHands
             houseStand = true;
         }
 
-        if((houseStand || BustCheck(false)) == true && (playerStand || BustCheck(true) == true))
+        if(houseStand == true || BustCheck(false) == true && playerStand == true || BustCheck(true) == true)
         {
-            CheckWin();
+            if(CheckWin() == true)
+            {
+                Console.WriteLine("You win!");
+            }
+            else
+            {
+                Console.WriteLine("You lost!");
+            }
+            end = true;
         }
     }
 

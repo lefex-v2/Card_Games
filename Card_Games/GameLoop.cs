@@ -14,13 +14,14 @@ class GameLoop
         int points = 0;
         int cinx = 0;
         string HorL = string.Empty;
+        bool exit = false;
 
         while (true)
         {
             Console.WriteLine(allCards.deck[cinx].cardName + "\r\n");
             Console.WriteLine("Higher or lower?");
 
-            bool exit = false;
+            
             bool loop = true;
             while (loop == true)
             {
@@ -30,14 +31,14 @@ class GameLoop
                     HorL = d;
                     loop = false;
                 }
-                if (d == "Q" || d == "q")
+                else if (d == "Q" || d == "q")
                 {
                     exit = true;
                     break;
                 }
             }
 
-            if(exit = true)
+            if(exit == true)
             {
                 break;
             }
@@ -85,11 +86,20 @@ class GameLoop
         bool stand = false;
         while (true)
         {
-            deck.HouseHand(stand);
+            deck.HouseHand();
 
-            Console.WriteLine("\r\nIt is your turn to draw!\r\n");
-            Console.WriteLine("Stand or hit (S for stand and H for hit)");
-            Console.WriteLine("You have " + deck.playerValue);
+            if (deck.end == true)
+            {
+                break;
+            }
+
+            if(stand == false)
+            {
+                Console.WriteLine("It is your turn to draw!\r\n");
+                Console.WriteLine("Stand or hit (S for stand and H for hit)");
+                Console.WriteLine("You have " + deck.playerValue);
+            }
+  
 
             bool loop = true;
             while (loop && stand == false)
@@ -104,15 +114,25 @@ class GameLoop
 
             if (choice == "H" || choice == "h" && stand == false)
             {
-                deck.PlayerHand();
                 Console.Clear();
+                deck.PlayerHand(false);
             }
-            else
+            else if((choice == "s" || choice == "S") && stand == false)
             {
                 Console.Clear();
-                Console.WriteLine("You have stood!");
+                deck.PlayerHand(true);
                 stand = true;
             }   
+
+            if(stand)
+            {
+                Console.WriteLine("Press enter to continue!");
+                Console.ReadLine();
+                Console.Clear();
+            }
         }
+        Console.WriteLine("Press enter to exit!");
+        Console.ReadLine();
+        Console.Clear();
     }
 }
