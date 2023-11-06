@@ -1,0 +1,14 @@
+C:\Users\leif.olmstead\Desktop\GitHub\Card_Games\GitDesk\Card_Games\Card_Games\bin\Debug\net6.0\Card_Games.exe
+C:\Users\leif.olmstead\Desktop\GitHub\Card_Games\GitDesk\Card_Games\Card_Games\bin\Debug\net6.0\Card_Games.deps.json
+C:\Users\leif.olmstead\Desktop\GitHub\Card_Games\GitDesk\Card_Games\Card_Games\bin\Debug\net6.0\Card_Games.runtimeconfig.json
+C:\Users\leif.olmstead\Desktop\GitHub\Card_Games\GitDesk\Card_Games\Card_Games\bin\Debug\net6.0\Card_Games.dll
+C:\Users\leif.olmstead\Desktop\GitHub\Card_Games\GitDesk\Card_Games\Card_Games\bin\Debug\net6.0\Card_Games.pdb
+C:\Users\leif.olmstead\Desktop\GitHub\Card_Games\GitDesk\Card_Games\Card_Games\obj\Debug\net6.0\Card_Games.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\leif.olmstead\Desktop\GitHub\Card_Games\GitDesk\Card_Games\Card_Games\obj\Debug\net6.0\Card_Games.AssemblyInfoInputs.cache
+C:\Users\leif.olmstead\Desktop\GitHub\Card_Games\GitDesk\Card_Games\Card_Games\obj\Debug\net6.0\Card_Games.AssemblyInfo.cs
+C:\Users\leif.olmstead\Desktop\GitHub\Card_Games\GitDesk\Card_Games\Card_Games\obj\Debug\net6.0\Card_Games.csproj.CoreCompileInputs.cache
+C:\Users\leif.olmstead\Desktop\GitHub\Card_Games\GitDesk\Card_Games\Card_Games\obj\Debug\net6.0\Card_Games.dll
+C:\Users\leif.olmstead\Desktop\GitHub\Card_Games\GitDesk\Card_Games\Card_Games\obj\Debug\net6.0\refint\Card_Games.dll
+C:\Users\leif.olmstead\Desktop\GitHub\Card_Games\GitDesk\Card_Games\Card_Games\obj\Debug\net6.0\Card_Games.pdb
+C:\Users\leif.olmstead\Desktop\GitHub\Card_Games\GitDesk\Card_Games\Card_Games\obj\Debug\net6.0\Card_Games.genruntimeconfig.cache
+C:\Users\leif.olmstead\Desktop\GitHub\Card_Games\GitDesk\Card_Games\Card_Games\obj\Debug\net6.0\ref\Card_Games.dll
