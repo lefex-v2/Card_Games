@@ -4,20 +4,23 @@ GameLoop gameLoop = new GameLoop();
 List<Action> games = new List<Action>();
 
 games.Add(gameLoop.HigherOrLower);
+games.Add(gameLoop.BlackJack);
 
-string[] choice = new string[1] { "1" };
-bool loop = true;
-
-Console.WriteLine("Pick a game to play!\r\n");
-Console.WriteLine("1: Higher or lower!");
-
-while (loop)
+while (true)
 {
-    int i = 0;
+    Console.Clear();
+    Console.WriteLine("Pick a game to play!\r\n");
+    Console.WriteLine("0: Higher or lower!");
+    Console.WriteLine("1: Blackjack!");
+
     string d = Console.ReadLine();
-    if(d == choice[i])
+
+    for (int i = 0; i < games.Count; i++)
     {
-        games[i](); 
+        if (d == i.ToString())
+        {
+            Console.Clear();
+            games[i]();
+        }
     }
-    i++;
 }

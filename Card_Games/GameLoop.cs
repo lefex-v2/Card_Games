@@ -20,6 +20,7 @@ class GameLoop
             Console.WriteLine(allCards.deck[cinx].cardName + "\r\n");
             Console.WriteLine("Higher or lower?");
 
+            bool exit = false;
             bool loop = true;
             while (loop == true)
             {
@@ -31,9 +32,16 @@ class GameLoop
                 }
                 if (d == "Q" || d == "q")
                 {
-                    Environment.Exit(0);
+                    exit = true;
+                    break;
                 }
             }
+
+            if(exit = true)
+            {
+                break;
+            }
+
             Console.Clear();
 
             bool yes = allCards.deck[cinx + 1].CompareValue(allCards.deck[cinx]);
@@ -65,5 +73,14 @@ class GameLoop
         }
         Console.WriteLine("Press enter to exit!");
         Console.ReadLine();
+        Console.Clear();
+    }
+
+    public void BlackJack()
+    {
+        Deck allCards = new Deck();
+        
+        allCards.ShuffleDeck();
+
     }
 }
