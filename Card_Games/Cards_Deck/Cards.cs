@@ -30,4 +30,13 @@ class Cards
         }
         return false;
     }
+
+    public int getValue(int currentScore)
+    {
+        if(currentScore > 10 && this.cardName.Contains("A"))
+        {
+            return 1;
+        }
+        return cardValue;
+    }
 }

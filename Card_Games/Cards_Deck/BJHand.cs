@@ -3,7 +3,6 @@ using System.Runtime.InteropServices;
 
 class BlackJackHands
 {
-    Deck allCards = new Deck();
     int drawAmount = 0;
     int cardDrawn = 0;
     bool playerStand = false;
@@ -15,10 +14,9 @@ class BlackJackHands
     public BlackJackHands(int draw)
     {
         this.drawAmount = draw;
-        allCards.ShuffleDeck();
     }
 
-    public void PlayerHand(bool standQ)
+    public void PlayerHand(bool standQ, List<Cards> theDeck)
     {
         if (BustCheck(true) == true)
         {
@@ -26,8 +24,8 @@ class BlackJackHands
         }
         else if (playerStand == false && standQ == false)
         {
-            Console.WriteLine("You drew " + allCards.deck[cardDrawn].cardName);
-            playerValue += allCards.deck[cardDrawn].cardValue;
+            Console.WriteLine("You drew " + theDeck[cardDrawn].cardName);
+            playerValue += theDeck[cardDrawn].getValue(playerValue);
             Console.WriteLine("You have " + playerValue);
 
             cardDrawn++;
@@ -39,17 +37,17 @@ class BlackJackHands
         }
     }
 
-    public void HouseHand()
+    public void HouseHand(List<Cards> theDeck)
     {
         if (BustCheck(false) == true)
         {
             Console.WriteLine("The house has busted over 21!");
         }
 
-        else if (houseValue <= 16 && BustCheck(true) == false)
+        else if ((houseValue <= 16 || playerValue >= houseValue) && BustCheck(true) == false)
         {
-            Console.WriteLine("The house drew " + allCards.deck[cardDrawn].cardName);
-            houseValue += allCards.deck[cardDrawn].cardValue;
+            Console.WriteLine("The house drew " + theDeck[cardDrawn].cardName);
+            houseValue += theDeck[cardDrawn].getValue(houseValue);
             Console.WriteLine("The house has " + houseValue + "\r\n");
 
             cardDrawn++;

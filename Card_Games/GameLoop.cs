@@ -9,7 +9,7 @@ class GameLoop
         Console.WriteLine("This game is a higher or lower card game!");
         Console.WriteLine("You can pick higher or lower with H and L! (Q to quit!) \r\n");
 
-        allCards.ShuffleDeck();
+        allCards.deck = allCards.ShuffleDeck(allCards.deck);
 
         int points = 0;
         int cinx = 0;
@@ -79,6 +79,9 @@ class GameLoop
 
     public void BlackJack()
     {
+        Deck allCards = new Deck();
+        allCards.bjdeck = allCards.ShuffleDeck(allCards.bjdeck);
+
         Console.WriteLine("This is blackjack!\r\nYou need to get as close to 21 as possible with the value of cards!\r\nBut don't go over or you bust!\r\n");
 
         BlackJackHands deck = new BlackJackHands(1);
@@ -86,7 +89,7 @@ class GameLoop
         bool stand = false;
         while (true)
         {
-            deck.HouseHand();
+            deck.HouseHand(allCards.bjdeck);
 
             if (deck.end == true)
             {
@@ -115,12 +118,12 @@ class GameLoop
             if (choice == "H" || choice == "h" && stand == false)
             {
                 Console.Clear();
-                deck.PlayerHand(false);
+                deck.PlayerHand(false, allCards.bjdeck);
             }
             else if((choice == "s" || choice == "S") && stand == false)
             {
                 Console.Clear();
-                deck.PlayerHand(true);
+                deck.PlayerHand(true, allCards.bjdeck);
                 stand = true;
             }   
 
