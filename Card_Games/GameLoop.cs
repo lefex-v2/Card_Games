@@ -112,7 +112,7 @@ class GameLoop
                 Console.Clear();
                 Console.WriteLine("You have stood!");
                 stand = true;
-            }
+            }   
         }
     }
 }
