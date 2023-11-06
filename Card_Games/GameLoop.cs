@@ -78,9 +78,41 @@ class GameLoop
 
     public void BlackJack()
     {
-        Deck allCards = new Deck();
-        
-        allCards.ShuffleDeck();
+        Console.WriteLine("This is blackjack!\r\nYou need to get as close to 21 as possible with the value of cards!\r\nBut don't go over or you bust!\r\n");
 
+        BlackJackHands deck = new BlackJackHands(1);
+        string choice = string.Empty;
+        bool stand = false;
+        while (true)
+        {
+            deck.HouseHand(stand);
+
+            Console.WriteLine("\r\nIt is your turn to draw!\r\n");
+            Console.WriteLine("Stand or hit (S for stand and H for hit)");
+            Console.WriteLine("You have " + deck.playerValue);
+
+            bool loop = true;
+            while (loop && stand == false)
+            {
+                choice = Console.ReadLine();
+
+                if (choice == "H"|| choice == "h"|| choice == "s"|| choice == "S")
+                {
+                    loop = false;
+                }
+            }
+
+            if (choice == "H" || choice == "h" && stand == false)
+            {
+                deck.PlayerHand();
+                Console.Clear();
+            }
+            else
+            {
+                Console.Clear();
+                Console.WriteLine("You have stood!");
+                stand = true;
+            }
+        }
     }
 }
