@@ -1,19 +1,34 @@
-﻿class CardHand
+﻿using System.Data.SqlTypes;
+using System.Net.Http.Headers;
+
+class CardHand
 {
-    new List<Cards> cardHand = new List<Cards>();
+    public new List<Cards> cardHand = new List<Cards>();
 
     public CardHand()
     {
         
     }
 
-    void AddCardToHand(Cards addedCard)
+    public void AddCardToHand(Cards addedCard)
     {
         cardHand.Add(addedCard);
     }
 
-    void RemoveCardFromHand(int cardInx)
+    public void RemoveCardFromHand(int cardInx)
     {
         cardHand.Remove(cardHand[cardInx]);
+    }
+
+    public bool CheckCardsInHand(string cardName)
+    {
+        var cardInHand = cardHand.Where(a => a.cardName.Contains(cardName));
+
+        foreach (var card in cardInHand)
+        {
+            Console.WriteLine(card.cardName);
+            return true;
+        }
+        return false;
     }
 }

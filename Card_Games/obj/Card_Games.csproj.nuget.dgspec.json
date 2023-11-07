@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\leif.olmstead\\Desktop\\GitHub\\Card_Games\\GitDesk\\Card_Games\\Card_Games\\Card_Games.csproj": {}
+    "C:\\Users\\leif.olmstead\\Desktop\\GitHub\\Card_Games\\Card_Games\\Card_Games.csproj": {}
   },
   "projects": {
-    "C:\\Users\\leif.olmstead\\Desktop\\GitHub\\Card_Games\\GitDesk\\Card_Games\\Card_Games\\Card_Games.csproj": {
+    "C:\\Users\\leif.olmstead\\Desktop\\GitHub\\Card_Games\\Card_Games\\Card_Games.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\leif.olmstead\\Desktop\\GitHub\\Card_Games\\GitDesk\\Card_Games\\Card_Games\\Card_Games.csproj",
+        "projectUniqueName": "C:\\Users\\leif.olmstead\\Desktop\\GitHub\\Card_Games\\Card_Games\\Card_Games.csproj",
         "projectName": "Card_Games",
-        "projectPath": "C:\\Users\\leif.olmstead\\Desktop\\GitHub\\Card_Games\\GitDesk\\Card_Games\\Card_Games\\Card_Games.csproj",
+        "projectPath": "C:\\Users\\leif.olmstead\\Desktop\\GitHub\\Card_Games\\Card_Games\\Card_Games.csproj",
         "packagesPath": "C:\\Users\\leif.olmstead\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\leif.olmstead\\Desktop\\GitHub\\Card_Games\\GitDesk\\Card_Games\\Card_Games\\obj\\",
+        "outputPath": "C:\\Users\\leif.olmstead\\Desktop\\GitHub\\Card_Games\\Card_Games\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

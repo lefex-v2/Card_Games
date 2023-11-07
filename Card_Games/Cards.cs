@@ -31,12 +31,15 @@ class Cards
         return false;
     }
 
-    public int getValue(int currentScore)
+    public int getValue(int currentScore, CardHand hand)
     {
-        if(currentScore > 10 && this.cardName.Contains("A"))
-        {
+        if(currentScore + cardValue > 21 && hand.CheckCardsInHand("A"))
+        { 
             return 1;
         }
-        return cardValue;
+        else
+        {
+            return cardValue;
+        }
     }
 }

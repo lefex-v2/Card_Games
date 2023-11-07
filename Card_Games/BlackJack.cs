@@ -3,7 +3,8 @@ using System.Runtime.InteropServices;
 
 class BlackJackHands
 {
-    int drawAmount = 0;
+    CardHand playerHand = new CardHand();
+    CardHand houseHand = new CardHand();
     int cardDrawn = 0;
     bool playerStand = false;
     bool houseStand = false;
@@ -13,7 +14,7 @@ class BlackJackHands
 
     public BlackJackHands(int draw)
     {
-        this.drawAmount = draw;
+
     }
 
     public void PlayerHand(bool standQ, List<Cards> theDeck)
@@ -25,7 +26,10 @@ class BlackJackHands
         else if (playerStand == false && standQ == false)
         {
             Console.WriteLine("You drew " + theDeck[cardDrawn].cardName);
-            playerValue += theDeck[cardDrawn].getValue(playerValue);
+            
+            playerHand.AddCardToHand(theDeck[cardDrawn]);
+            playerValue += theDeck[cardDrawn].getValue(playerValue, playerHand);
+            
             Console.WriteLine("You have " + playerValue);
 
             cardDrawn++;
@@ -47,7 +51,10 @@ class BlackJackHands
         else if ((houseValue <= 16 || playerValue >= houseValue) && BustCheck(true) == false)
         {
             Console.WriteLine("The house drew " + theDeck[cardDrawn].cardName);
-            houseValue += theDeck[cardDrawn].getValue(houseValue);
+
+            houseHand.AddCardToHand(theDeck[cardDrawn]);
+            houseValue += theDeck[cardDrawn].getValue(houseValue, houseHand);
+            
             Console.WriteLine("The house has " + houseValue + "\r\n");
 
             cardDrawn++;
@@ -58,7 +65,7 @@ class BlackJackHands
             houseStand = true;
         }
 
-        if(houseStand == true || BustCheck(false) == true && playerStand == true || BustCheck(true) == true)
+        if((houseStand == true || BustCheck(false) == true) && (playerStand == true || BustCheck(true) == true))
         {
             if(CheckWin() == true)
             {
