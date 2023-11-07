@@ -20,15 +20,43 @@ class CardHand
         cardHand.Remove(cardHand[cardInx]);
     }
 
-    public bool CheckCardsInHand(string cardName)
-    {
-        var cardInHand = cardHand.Where(a => a.cardName.Contains(cardName));
 
-        foreach (var card in cardInHand)
+    public int GetValueOfHand()
+    {
+        int score = 0;
+        foreach (var card in cardHand)
         {
-            Console.WriteLine(card.cardName);
-            return true;
+            score += card.cardValue;
         }
-        return false;
+
+        if(score > 21)
+        {
+            //find aces and reduce value untill score <= 21
+            int numAces = CheckCardInHand("A");
+            for (int i = 0; i < numAces; i++)
+            {
+                if(score > 21)
+                {
+                    score += - 10;
+                }
+            }
+            return score;
+        }
+        else
+        {
+            return score;
+        }
+    }
+
+    public int CheckCardInHand(string cardName)
+    {
+        //serch for a card im my hand
+        var cardsInHand = cardHand.Where(a => a.cardName.Contains(cardName));
+
+        foreach (var card in cardsInHand)
+        {
+            return cardsInHand.Count();
+        }
+        return 0;
     }
 }

@@ -28,7 +28,7 @@ class BlackJackHands
             Console.WriteLine("You drew " + theDeck[cardDrawn].cardName);
             
             playerHand.AddCardToHand(theDeck[cardDrawn]);
-            playerValue += theDeck[cardDrawn].getValue(playerValue, playerHand);
+            playerValue = playerHand.GetValueOfHand();
             
             Console.WriteLine("You have " + playerValue);
 
@@ -53,8 +53,8 @@ class BlackJackHands
             Console.WriteLine("The house drew " + theDeck[cardDrawn].cardName);
 
             houseHand.AddCardToHand(theDeck[cardDrawn]);
-            houseValue += theDeck[cardDrawn].getValue(houseValue, houseHand);
-            
+            houseValue = houseHand.GetValueOfHand();
+
             Console.WriteLine("The house has " + houseValue + "\r\n");
 
             cardDrawn++;

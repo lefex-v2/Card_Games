@@ -31,15 +31,15 @@ class Cards
         return false;
     }
 
-    public int getValue(int currentScore, CardHand hand)
-    {
-        if(currentScore + cardValue > 21 && hand.CheckCardsInHand("A"))
-        { 
-            return 1;
-        }
-        else
-        {
-            return cardValue;
-        }
-    }
+    //public int getValue(int currentScore, CardHand hand)
+    //{
+    //    if (currentScore + cardValue > 21 && hand.CheckCardInHand("A") > 0)
+    //    { 
+    //        return cardValue - 10;
+    //    }
+    //    else
+    //    {
+    //        return cardValue;
+    //    }
+    //}
 }
