@@ -19,18 +19,15 @@ class BlackJackHands
 
     public void PlayerHand(bool standQ, List<Cards> theDeck)
     {
-        if (BustCheck(true) == true)
-        {
-            Console.WriteLine("You have busted over 21!");
-        }
-        else if (playerStand == false && standQ == false)
+
+        if (playerStand == false && standQ == false && BustCheck(true) == false)
         {
             Console.WriteLine("You drew " + theDeck[cardDrawn].cardName);
             
             playerHand.AddCardToHand(theDeck[cardDrawn]);
             playerValue = playerHand.GetValueOfHand();
             
-            Console.WriteLine("You have " + playerValue);
+            Console.WriteLine("You have " + playerValue + "\r\n");
 
             cardDrawn++;
         }
@@ -39,16 +36,16 @@ class BlackJackHands
             this.playerStand = true;
             Console.WriteLine("You have stood with " + playerValue);
         }
+
+        if (BustCheck(true) == true)
+        {
+            Console.WriteLine("You have busted over 21!\r\n");
+        }
     }
 
     public void HouseHand(List<Cards> theDeck)
     {
-        if (BustCheck(false) == true)
-        {
-            Console.WriteLine("The house has busted over 21!");
-        }
-
-        else if ((houseValue <= 16 || playerValue >= houseValue) && BustCheck(true) == false)
+        if ((houseValue <= 16 && playerStand == false || playerValue >= houseValue) && BustCheck(true) == false && houseStand == false && BustCheck(false) == false)
         {
             Console.WriteLine("The house drew " + theDeck[cardDrawn].cardName);
 
@@ -59,13 +56,18 @@ class BlackJackHands
 
             cardDrawn++;
         }
-        else 
+        else if (BustCheck(false) == false)
         {
             Console.WriteLine("The house stands with " + houseValue);
             houseStand = true;
         }
 
-        if((houseStand == true || BustCheck(false) == true) && (playerStand == true || BustCheck(true) == true))
+        if (BustCheck(false) == true)
+        {
+            Console.WriteLine("The house has busted over 21!\r\n");
+        }
+
+        if ((houseStand == true || BustCheck(false) == true) && (playerStand == true || BustCheck(true) == true))
         {
             if(CheckWin() == true)
             {

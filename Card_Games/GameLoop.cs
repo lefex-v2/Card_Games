@@ -67,7 +67,8 @@ class GameLoop
 
             if (cinx >= allCards.deck.Count - 1)
             {
-                Console.WriteLine("The game is over!!!!11!1!");
+                Console.Clear();
+                Console.WriteLine("The game is over!");
                 Console.WriteLine("You have " + points + " points!");
                 break;
             }
