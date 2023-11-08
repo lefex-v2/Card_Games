@@ -21,7 +21,7 @@ class GameLoop
             Console.WriteLine(allCards.deck[cinx].cardName + "\r\n");
             Console.WriteLine("Higher or lower?");
 
-            
+
             bool loop = true;
             while (loop == true)
             {
@@ -38,7 +38,7 @@ class GameLoop
                 }
             }
 
-            if(exit == true)
+            if (exit == true)
             {
                 break;
             }
@@ -97,20 +97,20 @@ class GameLoop
                 break;
             }
 
-            if(stand == false)
+            if (stand == false)
             {
                 Console.WriteLine("It is your turn to draw!\r\n");
                 Console.WriteLine("Stand or hit (S for stand and H for hit)");
                 Console.WriteLine("You have " + deck.playerValue);
             }
-  
+
 
             bool loop = true;
             while (loop && stand == false)
             {
                 choice = Console.ReadLine();
 
-                if (choice == "H"|| choice == "h"|| choice == "s"|| choice == "S")
+                if (choice == "H" || choice == "h" || choice == "s" || choice == "S")
                 {
                     loop = false;
                 }
@@ -121,14 +121,14 @@ class GameLoop
                 Console.Clear();
                 deck.PlayerHand(false, allCards.bjdeck);
             }
-            else if((choice == "s" || choice == "S") && stand == false)
+            else if ((choice == "s" || choice == "S") && stand == false)
             {
                 Console.Clear();
                 deck.PlayerHand(true, allCards.bjdeck);
                 stand = true;
-            }   
+            }
 
-            if(stand)
+            if (stand)
             {
                 Console.WriteLine("Press enter to continue!");
                 Console.ReadLine();
@@ -138,5 +138,22 @@ class GameLoop
         Console.WriteLine("Press enter to exit!");
         Console.ReadLine();
         Console.Clear();
+    }
+
+    public void TexHoldPoker()
+    { 
+        Deck allCards = new Deck();
+        allCards.deck = allCards.ShuffleDeck(allCards.deck);
+        TexasHoldem game = new TexasHoldem(allCards.deck);
+
+        Console.WriteLine("This is Texas Holdem! \r\n It is a poker game with the standard poker hands.\r\n First both players get 2 cards!\r\n Over 5 rounds 5 new cards will be added drawn face up for all to use!\r\n Have fun!");
+
+
+
+        Console.ReadLine();
+        
+        game.Test();
+
+        Console.ReadLine();
     }
 }

@@ -19,7 +19,7 @@ class Cards
 
     public bool CompareValue(Cards card)
     {
-        //ture = the card that is runing is lagger and if false then the card that was pasted was lagger!
+        //ture = the card that is runing is lower and if false then the card that was pasted was lower!
         if (this.cardValue >= card.cardValue)
         {
             return true;
@@ -30,16 +30,4 @@ class Cards
         }
         return false;
     }
-
-    //public int getValue(int currentScore, CardHand hand)
-    //{
-    //    if (currentScore + cardValue > 21 && hand.CheckCardInHand("A") > 0)
-    //    { 
-    //        return cardValue - 10;
-    //    }
-    //    else
-    //    {
-    //        return cardValue;
-    //    }
-    //}
 }

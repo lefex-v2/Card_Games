@@ -25,7 +25,7 @@ class BlackJackHands
             Console.WriteLine("You drew " + theDeck[cardDrawn].cardName);
             
             playerHand.AddCardToHand(theDeck[cardDrawn]);
-            playerValue = playerHand.GetValueOfHand();
+            playerValue = playerHand.GetValueOfHandBJ();
             
             Console.WriteLine("You have " + playerValue + "\r\n");
 
@@ -50,7 +50,7 @@ class BlackJackHands
             Console.WriteLine("The house drew " + theDeck[cardDrawn].cardName);
 
             houseHand.AddCardToHand(theDeck[cardDrawn]);
-            houseValue = houseHand.GetValueOfHand();
+            houseValue = houseHand.GetValueOfHandBJ();
 
             Console.WriteLine("The house has " + houseValue + "\r\n");
 
