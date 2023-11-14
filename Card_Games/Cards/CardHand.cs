@@ -1,4 +1,5 @@
 ﻿using System.Data.SqlTypes;
+using System.Diagnostics;
 using System.Net.Http.Headers;
 
 class CardHand
@@ -50,6 +51,7 @@ class CardHand
 
     public PokerHandValue CalculatePokerHand()
     {
+        int tempcount = 0;
         //find high card
         Cards temp = cardHand[0];
         for (int i = 0; i < cardHand.Count; i++)
@@ -62,141 +64,119 @@ class CardHand
 
         PokerHandValue best = new PokerHandValue(temp.cardValue, 1);
 
-        //find a pair
+        //find four of a kind, three of a kind, pair.
+        int threeKind = 0;
+        int numRow = 0;
+        int value = 0;
         for (int i = 0; i < cardHand.Count; i++)
         {
-            for (int j = 0; j < cardHand.Count; j++)
+            for (int j = i + 1; j < cardHand.Count; j++)
             {
-                if (i != j)
+                if (cardHand[i].cardValue == cardHand[j].cardValue)
                 {
-                    if (cardHand[i].cardValue == cardHand[j].cardValue)
-                    {
-                        best = new PokerHandValue(cardHand[i].cardValue * 2, 2);
-                    }
+                    numRow += 1;
+                    value = cardHand[i].cardValue;
                 }
             }
+        }
+
+        //pair
+        if (numRow == 2)
+        {
+            best = new PokerHandValue(value, 2);
+
         }
 
         //find two pair
+        int numPairs = 0;
+        int highPair = 0;
         for (int i = 0; i < cardHand.Count; i++)
         {
             for (int j = 0; j < cardHand.Count; j++)
             {
                 if (i != j)
                 {
-                    //found first pair
                     if (cardHand[i].cardValue == cardHand[j].cardValue)
                     {
-                        for (int k = 0; i < cardHand.Count; k++)
+                        numPairs++;
+                        if(highPair < cardHand[i].cardValue)
                         {
-                            for (int l = 0; l < cardHand.Count; l++)
-                            {
-                                //find second pair
-                                if (k != l && k != i && l != j)
-                                {
-                                    if (cardHand[k].cardValue == cardHand[l].cardValue)
-                                    {
-                                        best = new PokerHandValue(cardHand[i].cardValue * 4, 3);
-                                    }
-                                }
-                            }
+                            highPair = cardHand[i].cardValue;
                         }
                     }
                 }
             }
         }
 
-        //find three of a kind
-        for (int i = 0; i < cardHand.Count; i++)
+        if(numPairs > 1)
         {
-            for (int j = 0; j < cardHand.Count; j++)
-            {
-                for (int k = 0; k < cardHand.Count; k++)
-                {
-                    if (i != j && i != k && k != j)
-                    {
-                        if (cardHand[i].cardValue == cardHand[j].cardValue && cardHand[i].cardValue == cardHand[k].cardValue)
-                        {
-                            best = new PokerHandValue(cardHand[i].cardValue * 3, 4);
-                        }
-                    }
-                }
-            }
+            best = new PokerHandValue(highPair, 3);
+        }
+
+
+
+        //three of a kind
+        if (numRow == 3)
+        {
+            best = new PokerHandValue(value, 4);
+            threeKind = value;
         }
 
         //find straight
-        int tempcount = 0;
-        for (int i = 0; i + 1 < cardHand.Count; i++)
+        for (int i = 0; i + 1 < cardHand.Count-4; i++)
         {
-            if (cardHand[i].cardValue + 1 == cardHand[i+1].cardValue)
+            tempcount = 0;
+            int currentValue = cardHand[i].cardValue;
+            for (int j = i + 1; j < cardHand.Count; j++)
             {
-                tempcount += 1;
-            }
-            else
-            {
-                tempcount = 0;
+                if (currentValue == cardHand[j].cardValue - 1)
+                {
+                    currentValue = cardHand[j].cardValue;
+                    tempcount += 1;
+                }
             }
 
             if (tempcount == 5)
             {
                 tempcount = 0;
-                best = new PokerHandValue(cardHand[i - 5].cardValue * 5, 5);
+                best = new PokerHandValue(currentValue, 5);
             }
         }
 
         //find flush
-        for (int i = 0; i + 1 < cardHand.Count; i++)
+        tempcount = 0;
+        for (int i = 0; i + 1 < cardHand.Count-4; i++)
         {
-            if (cardHand[i].cardSuit == cardHand[i + 1].cardSuit)
+            tempcount = 0;
+            int highValue = 0;
+            string currentValue = cardHand[i].cardSuit;
+            for (int j = i + 1; j < cardHand.Count; j++)
             {
-                tempcount += 1;
-            }
-            else
-            {
-                tempcount = 0;
+                if (currentValue == cardHand[j].cardSuit)
+                {
+                    currentValue = cardHand[j].cardSuit;
+                    tempcount += 1;
+                    highValue = cardHand[i].cardValue;
+                }
             }
 
             if (tempcount == 5)
             {
-                best = new PokerHandValue(cardHand[i - 5].cardValue * 5, 6);
+                best = new PokerHandValue(highValue, 6);
             }
         }
 
         //find fullhouse
-        for (int i = 0; i < cardHand.Count; i++)
+        if(highPair > 0 && threeKind > 0 && highPair != threeKind)
         {
-            for (int j = 0; j < cardHand.Count; j++)
-            {
-                for (int k = 0; k < cardHand.Count; k++)
-                {
-                    if (i != j && i != k && j != k)
-                    {
-                        //found three of a kind
-                        if (cardHand[i].cardValue == cardHand[j].cardValue && cardHand[i].cardValue == cardHand[k].cardValue)
-                        {
-                            for (int e = 0; e < cardHand.Count; e++)
-                            {
-                                for (int d = 0; d < cardHand.Count; d++)
-                                {
-                                    if (e != d && e != i && e != j && e != k && d != i && d != j && d != k)
-                                    {
-                                        //found pair
-                                        if (cardHand[e].cardValue == cardHand[d].cardValue)
-                                        {
-                                            best = new PokerHandValue(cardHand[e-5].cardValue * 5, 7);
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-            }
+            best = new PokerHandValue(threeKind, 7);
         }
 
-        //find 4 of a kind
-
-
+        // four of a kind
+        if (numRow == 4)
+        {
+            best = new PokerHandValue(value, 8);
+        }
         //find straight flush
 
         //find royal flush
@@ -214,5 +194,19 @@ class CardHand
             return cardsInHand.Count();
         }
         return 0;
+    }
+
+    public void Sorthand()
+    {
+        Cards temp;
+        for (int i = 1; i < cardHand.Count; i++)
+        {
+            if (cardHand[i].cardValue < cardHand[i-1].cardValue)
+            {
+                temp = cardHand[i-1];
+                cardHand[i - 1] = cardHand[i];
+                cardHand[i] = temp;
+            }
+        }
     }
 }

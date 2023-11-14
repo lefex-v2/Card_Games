@@ -21,6 +21,9 @@
         cardDraw++;
         houseHand.AddCardToHand(theDeck[cardDraw]);
 
+        playerHand.Sorthand();
+        houseHand.Sorthand();
+
         Console.WriteLine("The player has!");
         for (int i = 0; i < houseHand.cardHand.Count; i++)
         {
