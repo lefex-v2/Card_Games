@@ -13,19 +13,24 @@
     //place holder for main game while debugging and building
     public void Test()
     {
-        playerHand.AddCardToHand(theDeck[cardDraw]);
+        playerHand.AddCardToHand(theDeck[0]);
         cardDraw++;
         houseHand.AddCardToHand(theDeck[cardDraw]);
         cardDraw++;
-        playerHand.AddCardToHand(theDeck[cardDraw]);
+        playerHand.AddCardToHand(theDeck[1]);
         cardDraw++;
-        houseHand.AddCardToHand(theDeck[cardDraw]);
+        houseHand.AddCardToHand(theDeck[2]);
+        playerHand.AddCardToHand(theDeck[3]);
+        playerHand.AddCardToHand(theDeck[4]);
+        playerHand.AddCardToHand(theDeck[5]);
+
+
 
         playerHand.Sorthand();
         houseHand.Sorthand();
 
         Console.WriteLine("The player has!");
-        for (int i = 0; i < houseHand.cardHand.Count; i++)
+        for (int i = 0; i < playerHand.cardHand.Count; i++)
         {
             Console.WriteLine(playerHand.cardHand[i].cardName);
         }

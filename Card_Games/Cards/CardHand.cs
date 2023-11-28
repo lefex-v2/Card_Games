@@ -84,7 +84,7 @@ class CardHand
         if (numRow == 2)
         {
             best = new PokerHandValue(value, 2);
-
+            Console.WriteLine("Pair");
         }
 
         //find two pair
@@ -111,6 +111,7 @@ class CardHand
         if(numPairs > 1)
         {
             best = new PokerHandValue(highPair, 3);
+            Console.WriteLine("2 pair");
         }
 
 
@@ -120,6 +121,7 @@ class CardHand
         {
             best = new PokerHandValue(value, 4);
             threeKind = value;
+            Console.WriteLine("3 of kind");
         }
 
         //find straight
@@ -138,6 +140,7 @@ class CardHand
 
             if (tempcount == 5)
             {
+                Console.WriteLine("Straight");
                 tempcount = 0;
                 best = new PokerHandValue(currentValue, 5);
             }
@@ -162,6 +165,7 @@ class CardHand
 
             if (tempcount == 5)
             {
+                Console.WriteLine("Flush");
                 best = new PokerHandValue(highValue, 6);
             }
         }
@@ -169,12 +173,14 @@ class CardHand
         //find fullhouse
         if(highPair > 0 && threeKind > 0 && highPair != threeKind)
         {
+            Console.WriteLine("full house");
             best = new PokerHandValue(threeKind, 7);
         }
 
         // four of a kind
         if (numRow == 4)
         {
+            Console.WriteLine("4 of kind");
             best = new PokerHandValue(value, 8);
         }
         //find straight flush

@@ -238,7 +238,7 @@ class GameLoop
     public void TexHoldPoker()
     { 
         Deck allCards = new Deck();
-        allCards.deck = allCards.ShuffleDeck(allCards.deck);
+        //allCards.deck = allCards.ShuffleDeck(allCards.deck);
         TexasHoldem game = new TexasHoldem(allCards.deck);
 
         Console.WriteLine("This is Texas Holdem! \r\n It is a poker game with the standard poker hands.\r\n First both players get 2 cards!\r\n Over 5 rounds 5 new cards will be added drawn face up for all to use!\r\n Have fun!");
@@ -246,7 +246,7 @@ class GameLoop
         Console.ReadLine();
         
         game.Test();
-
+           
         Console.ReadLine();
     }
 }
