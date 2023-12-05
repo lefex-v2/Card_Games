@@ -19,10 +19,10 @@
         cardDraw++;
         playerHand.AddCardToHand(theDeck[1]);
         cardDraw++;
-        houseHand.AddCardToHand(theDeck[2]);
-        playerHand.AddCardToHand(theDeck[3]);
-        playerHand.AddCardToHand(theDeck[4]);
-        playerHand.AddCardToHand(theDeck[5]);
+        houseHand.AddCardToHand(theDeck[12]);
+        playerHand.AddCardToHand(theDeck[13]);
+        playerHand.AddCardToHand(theDeck[27]);
+        playerHand.AddCardToHand(theDeck[42]);
 
 
 

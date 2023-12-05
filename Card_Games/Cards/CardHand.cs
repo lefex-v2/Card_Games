@@ -80,8 +80,10 @@ class CardHand
             }
         }
 
+        numRow -= numRow / 2;
+        
         //pair
-        if (numRow == 2)
+        if (numRow >= 1)
         {
             best = new PokerHandValue(value, 2);
             Console.WriteLine("Pair");
@@ -90,7 +92,7 @@ class CardHand
         //find two pair
         int numPairs = 0;
         int highPair = 0;
-        for (int i = 0; i < cardHand.Count; i++)
+        for (aint i = 0; i < cardHand.Count; i++)
         {
             for (int j = 0; j < cardHand.Count; j++)
             {
@@ -107,6 +109,7 @@ class CardHand
                 }
             }
         }
+        numPairs = numPairs - (numPairs/2) + 1;
 
         if(numPairs > 1)
         {
@@ -117,10 +120,10 @@ class CardHand
 
 
         //three of a kind
-        if (numRow == 3)
+        if (numRow == 2)
         {
-            best = new PokerHandValue(value, 4);
             threeKind = value;
+            best = new PokerHandValue(value, 4);
             Console.WriteLine("3 of kind");
         }
 
@@ -178,7 +181,7 @@ class CardHand
         }
 
         // four of a kind
-        if (numRow == 4)
+        if (numRow == 3)
         {
             Console.WriteLine("4 of kind");
             best = new PokerHandValue(value, 8);
